@@ -149,7 +149,7 @@ DEPARTMENT_ID DEPARTMENT_NAME
 SELECT last_name, salary, salary + 300 FROM   employees;
 ```
 
-- 查询结果
+​	查询结果
 
 ```
 LAST_NAME        SALARY SALARY+300
@@ -159,7 +159,42 @@ Kochhar           17000      17300
 De Haan           17000      17300
 ```
 
+- 混合运算
 
+```sql
+SELECT last_name,salary,salary*12+100 FROM employees;
+```
+
+​	查询结果
+
+```
+LAST_NAME                SALARY SALARY*12+100
+-------------------- ---------- -------------
+King                      24000        288100
+Kochhar                   17000        204100
+De Haan                   17000        204100
+```
 
 #### 空值
+
+- 空值是指不可用、未分配、未知或不适用的值.
+- 空值不同于零和空格. 
+
+在`Employees`表中，`commission_pct`字段会有空值
+
+```sql
+SELECT last_name, job_id, salary, commission_pct FROM employees;
+```
+
+​	查询结果
+
+```
+LAST_NAME            JOB_ID                   SALARY COMMISSION_PCT
+-------------------- -------------------- ---------- --------------
+King                 AD_PRES                   24000
+Kochhar              AD_VP                     17000
+De Haan              AD_VP                     17000
+```
+
+- 空值参与任何运算得到的结果，仍是空值
 
