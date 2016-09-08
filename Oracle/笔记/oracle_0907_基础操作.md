@@ -60,7 +60,7 @@ SELECT * FROM tab;
 
 ## SELECT语句
 
-### 基本SELECT语句
+### 基本查询语句
 
 #### 语法
 
