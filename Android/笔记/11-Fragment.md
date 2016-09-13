@@ -10,7 +10,7 @@
 - 所依赖的Activity称为宿主Activity
 - 一个Activity中可以有多个Fragment，一个Fragment可以被多个Activity使用
 - Fragment有自己的布局和布局中控件的事件处理逻辑
-- Fragment有自己的声明周期，和宿主Activity息息相关
+- Fragment有自己的生命周期，和宿主Activity息息相关
 - 在一个Activity运行期间，可以动态创建、添加和删除Fragment
 
 ## 使用Fragment
@@ -70,7 +70,7 @@ public class Fragment1 extends Fragment {
 - name属性是此标签所加载的Fragment，
 - id属性是一个标记
 
-宿主Activity可以获取到Fragment中的控件
+宿主Activity可以直接获取到Fragment中的控件
 
 #### 动态加载
 
@@ -111,5 +111,74 @@ FragmentTransaction transaction = manager.beginTransaction();
 transaction.add(R.id.frame,new Fragment1());
 //4.提交事物
 transaction.commit();
+```
+
+## Fragment生命周期
+
+和Activity一样，Fragment也有自己的生命周期。并且受到其宿主Activity的影响
+
+1. `onAttach` - Fragment和Activity发送关联的时候执行
+2. `onCreate` - 创建Fragment时执行
+3. `onCreateView` - 创建Fragment布局时执行
+4. `onActivityCreated` - 当宿主Activity创建完成时执行
+5. `onStart` - 启动Fragment时执行
+6. `onResume` - Fragment可见可交互的时候执行
+7. `onPause` - 暂停Fragment时执行
+8. `onStop` - 停止Fragment时执行
+9. `onDestroyView` - 销毁Fragment视图时执行
+10. `onDestroy` - 销毁Fragment时执行
+11. `onDetach` - 和Activity取消关联时执行
+
+## Fragment之间的通讯
+
+### Activity向Fragment发送数据
+
+#### 添加Fragment时发送
+
+- 发送
+
+```java
+//1.获取Fragment管理器
+FragmentManager manager = getFragmentManager();
+//2.开启事物
+FragmentTransaction transaction = manager.beginTransaction();
+//准备要发送的数据
+Bundle bundle = new Bundle();
+bundle.putString("data","Activity发送到Fragment的数据");
+Fragment1 f1 = new Fragment1();
+f1.setArguments(bundle);
+//3.添加Fragment
+transaction.add(R.id.frame, f1);
+//4.提交事物
+transaction.commit();
+```
+
+- 接收
+
+```java
+//获取Activity传过来的Bundle
+Bundle bundle = getArguments();
+//从Bundle里获取数据
+String data = bundle.getString("data");
+textView.setText(data);
+```
+
+#### Fragment运行中发送
+
+- 在Fragment中提供公共方法用来接收数据
+
+```java
+public void changeText(String text){
+    textView.setText(text);
+}
+```
+
+- 在宿主Activity找到对应的Fragment，并调用接收数据的方法
+
+```java
+FragmentManager fragmentManager = getFragmentManager();
+//通过FragmentManager根据TAG寻找指定Fragment
+Fragment1 fragment1 = (Fragment1) fragmentManager.findFragmentByTag("f1");
+fragment1.changeText("改变文字");
 ```
 
