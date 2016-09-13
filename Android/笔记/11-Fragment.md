@@ -74,7 +74,7 @@ public class Fragment1 extends Fragment {
 
 #### 动态加载
 
-1. 在Activity布局中准备显示Fragment的Layout
+**第一步：** 在Activity布局中准备显示Fragment的Layout
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -100,7 +100,7 @@ public class Fragment1 extends Fragment {
 </LinearLayout>
 ```
 
-2. 在MainActivity代码中：
+**第二步：** 在MainActivity代码中：
 
 ```java
 //1.获取Fragment管理器
