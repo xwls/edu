@@ -110,10 +110,10 @@ String lastActiivity = runningTasks.get(0).baseActivity.getClassName()
    * 系统即将触发Activity重构前就会被调用
    * 资源不足，系统认为这个Activity有可能被回收时会被调用
    * 参数outState，由系统负责维护和传入，用来存放需要保存的数据
-2. `onRestoreInstanceState()`：重构之后恢复数据
+2. `onCreate`：重构之后恢复数据
    * 事实上onCreate的参数就足以帮助我们恢复状态
    * 如果Activity经历了save状态的方法，传入的参数中就带有我们保存下来的数据
-3. `onCreate`：重构之后恢复数据
+3. `onRestoreInstanceState()`：重构之后恢复数据
    * 在所有初始化结束后再恢复数据
 
 #### 例子
@@ -191,7 +191,7 @@ setResult(RESULT_OK,intent);
 finish();
 ```
 
-3. 重写MainActivity中`onActivityResult`方法
+3. 重写MainActivity中`onActivityResult()`方法
 
 ```java
 @Override
