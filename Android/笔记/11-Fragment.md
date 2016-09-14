@@ -182,3 +182,66 @@ Fragment1 fragment1 = (Fragment1) fragmentManager.findFragmentByTag("f1");
 fragment1.changeText("改变文字");
 ```
 
+### Fragment向Activity发送数据
+
+#### 发送
+
+**第一步：**声明一个接口，接口里需要一个用来回调的方法
+
+```java
+/**
+* 1.声明一个借口
+*/
+public interface MyListener{
+/**
+ * 发送数据给Activity
+ * @param data
+ */
+public void sendToActivity(String data);
+}
+```
+
+**第二步：**在Fragment中声明接口变量
+
+```java
+//2.声明接口变量
+private MyListener listrner = null;
+```
+
+**第三步：**在Fragment声明周期中的`onAttach()`方法中为接口变量赋值
+
+```java
+@Override
+public void onAttach(Context context) {
+    super.onAttach(context);
+    //3.将关联的Activity赋值给接口变量
+    listrner = (MyListener) context;
+}
+```
+
+**第四步：**调用接口中的方法发送数据
+
+```java
+button.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        //4.发送数据
+        listrner.sendToActivity("Fragment发送给Activity的数据");
+    }
+});
+```
+
+#### 接收
+
+让宿主Activity实现刚刚定义的接口，重写接口中的回调方法
+
+```java
+public class MainActivity extends AppCompatActivity implements Fragment1.MyListener{
+  ......//省略
+    @Override
+    public void sendToActivity(String data) {
+        Toast.makeText(MainActivity.this, data, Toast.LENGTH_SHORT).show();
+    }
+}
+```
+
