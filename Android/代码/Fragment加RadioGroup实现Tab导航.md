@@ -1,5 +1,10 @@
 # Fragment加RadioGroup实现Tab导航
 
+> 使用Fragment和RadioGroup实现Tab导航
+
+效果图：
+![效果图](imgs/Tab.gif)
+
 ## 四个Fragment
 
 ### 首页
