@@ -7,13 +7,42 @@
 #### HomeFragment
 
 ```java
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
+/**
+ * Created by Kevin on 2016/9/14.
+ */
+public class HomeFragment extends Fragment{
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_home, null);
+        return view;
+    }
+}
 ```
 
 #### fragment_home.xml
 
 ```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="主页"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout>
 ```
 
 
@@ -23,13 +52,42 @@
 #### TypeFragment
 
 ```java
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
+/**
+ * Created by Kevin on 2016/9/14.
+ */
+public class TypeFragment extends Fragment{
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_type, null);
+        return view;
+    }
+}
 ```
 
 #### fragment_type.xml
 
 ```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="分类"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout>
 ```
 
 
@@ -39,13 +97,42 @@
 #### CartFragment
 
 ```java
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
+/**
+ * Created by Kevin on 2016/9/14.
+ */
+public class CartFragment extends Fragment {
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_cart, null);
+        return view;
+    }
+}
 ```
 
 #### fragment_cart.xml
 
 ```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="购物车"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout>
 ```
 
 
@@ -55,13 +142,42 @@
 #### MineFragment
 
 ```java
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
+/**
+ * Created by Kevin on 2016/9/14.
+ */
+public class MineFragment extends Fragment{
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_mine, null);
+        return view;
+    }
+}
 ```
 
 #### fragment_mine.xml
 
 ```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="我的"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout>
 ```
 
 
@@ -118,7 +234,7 @@ public class TabActivity extends FragmentActivity {
 		radioButton3 = (RadioButton) findViewById(R.id.rb_cart);
 		radioButton4 = (RadioButton) findViewById(R.id.rb_mine);
 		rgs = (RadioGroup) findViewById(R.id.rg_tab);
-        rgs.check(R.id.rb_home);
+         rgs.check(R.id.rb_home);//默认选中第一个按钮
 		tabAdapter = new FragmentTabAdapter(this, fragments, R.id.frame,
 				rgs);
 		tabAdapter.setOnRgsExtraCheckedChangedListener(new FragmentTabAdapter.OnRgsExtraCheckedChangedListener(){
