@@ -143,7 +143,7 @@ public class MyRadioButton extends RadioButton {
     </declare-styleable>
 </resources>
 ```
-### 在布局中使用
+## 在布局中使用
 
 ```xml
 <com.oaec.myradiobutton.MyRadioButton
