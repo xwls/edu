@@ -53,11 +53,11 @@ public class CycleViewPager extends ViewPager {
         }
 
         @Override
-        public void onPageScrollStateChanged(int arg0) {
-            if (null != listener) {
-                listener.onPageScrollStateChanged(arg0);
+        public void onPageScrollStateChanged(int state) {
+            if (listener != null) {
+                listener.onPageScrollStateChanged(state);
             }
-            if (arg0 == ViewPager.SCROLL_STATE_IDLE) {
+            if (state == ViewPager.SCROLL_STATE_IDLE) {
                 if (position == mAdapter.getCount() - 1) {
                     setCurrentItem(1, false);
                 } else if (position == 0) {
@@ -67,19 +67,21 @@ public class CycleViewPager extends ViewPager {
         }
 
         @Override
-        public void onPageScrolled(int arg0, float arg1, int arg2) {
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             if (null != listener) {
-                listener.onPageScrolled(arg0, arg1, arg2);
+                listener.onPageScrolled(position, positionOffset, positionOffsetPixels);
             }
         }
 
+
         @Override
-        public void onPageSelected(int arg0) {
-            position = arg0;
+        public void onPageSelected(int position) {
+            this.position = position;
             if (null != listener) {
-                listener.onPageSelected(arg0);
+                listener.onPageSelected(position);
             }
         }
+
     }
 
     private class InnerPagerAdapter extends PagerAdapter {
@@ -109,8 +111,8 @@ public class CycleViewPager extends ViewPager {
         }
 
         @Override
-        public boolean isViewFromObject(View arg0, Object arg1) {
-            return adapter.isViewFromObject(arg0, arg1);
+        public boolean isViewFromObject(View view, Object object) {
+            return adapter.isViewFromObject(view, object);
         }
 
         @Override
