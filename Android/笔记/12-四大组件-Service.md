@@ -85,21 +85,21 @@ public class MyStartService extends Service {
 
 1. 实例化Intent对象
 
-```java
-  Intent intent = new Intent(this,MyStartService.class);
-```
+   ```java
+   Intent intent = new Intent(this,MyStartService.class);
+   ```
 
 2. 启动服务
 
-```java
-  startService(intent);
-```
+   ```java
+   startService(intent);
+   ```
 
 3. 停止服务
 
-```java
-  stopService(intent);
-```
+   ```java
+   stopService(intent);
+   ```
 
 #### 特点
 
